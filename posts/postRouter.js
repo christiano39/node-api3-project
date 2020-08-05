@@ -42,7 +42,7 @@ router.put('/:id', validatePostId, (req, res) => {
 function validatePostId(req, res, next) {
   Posts.getById(req.params.id)
     .then(post => {
-      if (post.id){
+      if (post){
         req.post = post;
         next();
       }else {
@@ -50,7 +50,7 @@ function validatePostId(req, res, next) {
       }
     })
     .catch(() => {
-      res.status(400).json({ message: "Invalid post ID" });
+      res.status(500).json({ message: "Error finding post" });
     })
 }
 
