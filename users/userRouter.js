@@ -86,7 +86,7 @@ function validateUserId(req, res, next) {
       }
     })
     .catch(() => {
-      res.status(500).json({ message: "Error finding user" });
+      res.status(400).json({ message: "Invalid user ID" });
     })
 }
 
